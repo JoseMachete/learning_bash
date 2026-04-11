@@ -134,7 +134,8 @@ fighting () {
 		
 	Orc_AC=$(($RANDOM%15+10))  #We set the can's properties inside the function,
 	Orc_HP=$(($RANDOM%8+5))   #But might as well have done it at the beginning.
-
+	Orc_Initial_HP=$Orc_HP
+	
 	echo ""
 	echo -e ' 	Target placed at the pole,
 
@@ -195,7 +196,8 @@ check_result () {
 		echo " 
 		  Good marksmanship! You have trashed the $target!
 		  "
-		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n"
+		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n
+	The $target had $Orc_Initial_HP resistance points.\n"
 		echo " $target" >> ./Scoreboard.txt
 		mv $target ./Shredded_Cans/
 		rm -fr $target
@@ -203,7 +205,8 @@ check_result () {
 		echo " 
 		  Better luck next time. You have failed to destroy the $target.
 		  "
-		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n"
+		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n
+	The $target had $Orc_Initial_HP resistance points.\n"
 		sleep 1
 		
 	fi
