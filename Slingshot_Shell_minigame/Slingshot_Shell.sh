@@ -5,8 +5,12 @@ clear
 pl_total=0
 comp_total=0
 
-myName="Papa"
-myMate="RR"
+#Pending to code in a way to flip a coin, see who starts first.
+#First shooter will have an extra point to the total_score, becasue
+#Second shooter already gets advantage.
+
+myName="Hunty"
+myMate="Tete"
 
 #Introducing 3 different sets of bands to choose. 
 #Both players agree on the same set, for now.
@@ -160,10 +164,11 @@ fighting () {
 		Orc_HP=$(( $Orc_HP - $proll ))
 		
 			if [[ $Orc_HP -lt 1 ]]; then
-				echo "  WOW! Good hit!"
+				echo "  WOW! Good hit!
+				"
 				
 			elif [[ $comp_total -ge $Orc_AC ]]; then
-				echo -e "  $myMate hits the $target!\n"
+				echo -e "  $myMate hits the $target!"
 				Orc_HP=$(( $Orc_HP - $croll ))
 				
 				if [[ $Orc_HP -lt 1 ]]; then
@@ -179,7 +184,8 @@ fighting () {
 			echo "  $myMate hits the $target!"
 			Orc_HP=$(( $Orc_HP - $croll ))
 			if [[ $Orc_HP -lt 1 ]]; then
-				echo "  Good shot!!!"
+				echo "  Good shot!!!
+				"
 								
 			fi
 		elif [[ $comp_total -lt $Orc_AC ]]; then
