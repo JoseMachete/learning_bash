@@ -159,8 +159,8 @@ fighting () {
 #Yeah, the can is an Orc.
 	
 	if [[ $pl_total -ge $Orc_AC ]]; then
-		echo "  $myName hits the $target!
-		"		
+		echo "  $myName hits the $target!"
+				
 		Orc_HP=$(( $Orc_HP - $proll ))
 		
 			if [[ $Orc_HP -lt 1 ]]; then
@@ -168,7 +168,8 @@ fighting () {
 				"
 				
 			elif [[ $comp_total -ge $Orc_AC ]]; then
-				echo -e "  $myMate hits the $target!"
+				echo -e "  $myMate hits the $target!
+				"
 				Orc_HP=$(( $Orc_HP - $croll ))
 				
 				if [[ $Orc_HP -lt 1 ]]; then
@@ -181,12 +182,11 @@ fighting () {
 	elif [[ $pl_total -lt $Orc_AC ]]; then
 		echo "  $myName missed."
 		if [[ $comp_total -ge $Orc_AC ]]; then
-			echo "  $myMate hits the $target!"
+			echo "  $myMate hits the $target!
+			"
 			Orc_HP=$(( $Orc_HP - $croll ))
 			if [[ $Orc_HP -lt 1 ]]; then
-				echo "  Good shot!!!
-				"
-								
+				echo "  Good shot!!!"
 			fi
 		elif [[ $comp_total -lt $Orc_AC ]]; then
 				echo "  Ooof, $myMate also missed."
@@ -204,7 +204,7 @@ check_result () {
 		  "
 		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n
 	The $target had $Orc_Initial_HP resistance points.\n"
-		echo " $target" >> ./Scoreboard.txt
+		echo -e " $target -> $myName's score was $pl_total | $myMate's score was $comp_total." >> ./Scoreboard.txt 
 		mv $target ./Shredded_Cans/
 		rm -fr $target
 	else
