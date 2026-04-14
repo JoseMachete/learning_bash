@@ -10,7 +10,7 @@ comp_total=0
 #Second shooter already gets advantage.
 
 myName="Hunty"
-myMate="Tete"
+myMate="Papa"
 
 #Introducing 3 different sets of bands to choose. 
 #Both players agree on the same set, for now.
@@ -166,7 +166,7 @@ fighting () {
 			if [[ $Orc_HP -lt 1 ]]; then
 				echo "  WOW! Good hit!
 				"
-				
+				echo -e " $target -> $myName's score: $pl_total " >> ./Scoreboard.txt
 			elif [[ $comp_total -ge $Orc_AC ]]; then
 				echo -e "  $myMate hits the $target!
 				"
@@ -174,7 +174,7 @@ fighting () {
 				
 				if [[ $Orc_HP -lt 1 ]]; then
 					echo "  Good shot!!!"
-					
+					echo -e " $target -> $myMate's score: $comp_total " >> ./Scoreboard.txt
 				fi
 			elif [[ $comp_total -lt $Orc_AC ]]; then
 				echo "  $myMate missed." 
@@ -187,6 +187,7 @@ fighting () {
 			Orc_HP=$(( $Orc_HP - $croll ))
 			if [[ $Orc_HP -lt 1 ]]; then
 				echo "  Good shot!!!"
+				echo -e " $target -> $myMate's score -> $comp_total." >> ./Scoreboard.txt
 			fi
 		elif [[ $comp_total -lt $Orc_AC ]]; then
 				echo "  Ooof, $myMate also missed."
@@ -204,7 +205,6 @@ check_result () {
 		  "
 		echo -e "  You needed a roll of $Orc_AC to hit the $target.\n
 	The $target had $Orc_Initial_HP resistance points.\n"
-		echo -e " $target -> $myName's score was $pl_total | $myMate's score was $comp_total." >> ./Scoreboard.txt 
 		mv $target ./Shredded_Cans/
 		rm -fr $target
 	else
